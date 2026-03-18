@@ -4,32 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Delivery App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <h1>Welcome to Food Delivery App</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Orders</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="featured-items">
-            <h2>Featured Items</h2>
-            <!-- Featured food items will go here -->
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-green-600 text-white p-4 sticky top-0 z-40">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">🍔 Food Delivery App</h1>
+            <div>
+                <input type="text" id="locationInput" placeholder="Search by location..." 
+                    class="px-4 py-2 rounded text-black w-64">
+                <button onclick="detectLocation()" class="ml-2 bg-white text-green-600 px-4 py-2 rounded font-bold">
+                    📍 Detect Location
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto p-4">
+        <!-- Restaurants Grid -->
+        <section id="restaurants">
+            <h2 class="text-3xl font-bold mb-6">Available Restaurants</h2>
+            <div id="restaurantList" class="grid grid-cols-3 gap-4">
+                <!-- Restaurants will be rendered here -->
+            </div>
         </section>
-        <section id="about-us">
-            <h2>About Us</h2>
-            <p>We deliver food to your doorstep with a variety of cuisines.</p>
+
+        <!-- Restaurant Detail View -->
+        <section id="restaurantDetail" class="hidden">
+            <button onclick="goBack()" class="bg-gray-600 text-white px-4 py-2 rounded mb-4">← Back</button>
+            <h2 id="detailName" class="text-3xl font-bold mb-6"></h2>
+            <div id="menuItems" class="bg-white p-6 rounded-xl shadow">
+                <!-- Menu items will be rendered here -->
+            </div>
         </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Food Delivery App</p>
-    </footer>
+    </div>
+
+    <!-- Cart (Fixed Position) -->
+    <div id="cart" class="fixed bottom-0 right-0 bg-white shadow-lg p-4 w-80 z-50 rounded-tl-xl">
+        <!-- Cart content will be rendered here -->
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
 </body>
 </html>
